@@ -1,0 +1,107 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest", // Use the latest ECMAScript version
+    "sourceType": "module" // Code has a module scope and is run in strict mode
+  },
+  "plugins": ["@typescript-eslint", "import", "react"],
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:@next/next/recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "semi": "error", // Enforce the use of semicolons
+    "@typescript-eslint/no-var-requires": "error", // Eliminate use of require() statement and always use import instead
+    "no-console": "warn", // Show warning when found console.*() statement for clean code push
+    "@typescript-eslint/explicit-module-boundary-types": "error", // Explicitly tell Typescript what is being returned by the any function
+    "@typescript-eslint/no-explicit-any": "off", // Allow the use of the any type (off instead of error or warn)
+    "@typescript-eslint/no-unused-vars": "warn", // Show warning when found unused variables in TypeScript code
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling", "index"]
+        ],
+        "newlines-between": "always" // Add newlines between import groups
+      }
+    ],
+    "import/no-cycle": "error", // Prevent circular imports
+    "import/no-unresolved": "error", // Allow unresolved imports
+    "import/extensions": "off", // Allow import statements to exclude file extensions (off instead of warn)
+    "react/react-in-jsx-scope": "error", // Ensure React is in scope when using JSX
+    "react/jsx-curly-brace-presence": "error", // Enforce curly braces around JSX attributes
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    ], // Allow JSX to be used in files with extensions other than .jsx or .tsx (off instead of warn or error)
+    "react/jsx-props-no-spreading": [
+      "error",
+      {
+        "exceptions": ["Range", "Slider", "div", "Input", "select"]
+      }
+    ], // Allow spreading of props in JSX (off instead of warn)
+    "jsx-a11y/anchor-is-valid": "error", // Allow invalid href attributes in anchor tags
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }
+    ], // Allow labels without associated form controls (off instead of warn)
+    "jsx-a11y/control-has-associated-label": "error", // Allow form controls without associated labels (off instead of warn or error)
+    "react/self-closing-comp": "error", // Allow self-closing components in JSX
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ], // Function component is not a function declaration because we used latest ES6.
+    "no-useless-return": "error", // Allow unnecessary return statements (off instead of warn)
+    "no-else-return": "error", // Allow redundant else return statements (off instead of warn)
+    "camelcase": "off", // Allow non-camelcase variable names (off instead of warn) - (Because we pass data into the API such as 'contact_firstname' that's why we off the camelcase)
+    "jsx-a11y/click-events-have-key-events": "error", // Enforce keyboard events for clickable elements
+    "jsx-a11y/no-noninteractive-element-interactions": "error", // Allow non-interactive elements with event listeners (off instead of warn)
+    "jsx-a11y/no-static-element-interactions": "error", // Disallow non-interactive elements with interactive roles
+    "consistent-return": "error", // Ensure consistent return statements in functions
+    "prettier/prettier": [
+      "error",
+      {
+        "printWidth": 80, // Limit the line length to 80 characters
+        "singleQuote": true, // Use single quotes instead of double quotes
+        "useTabs": false, // Use spaces instead of tabs
+        "tabWidth": 2, // Set the tab width to 2 spaces
+        "trailingComma": "es5" // Add trailing commas where valid in ES5
+      }
+    ]
+  },
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      }
+    }
+  }
+}
+
